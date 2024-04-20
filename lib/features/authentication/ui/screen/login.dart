@@ -1,6 +1,7 @@
 import 'package:ecommerce_demo/features/authentication/ui/widgets/form_footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/common_widgets/custom_message_bar/message_bar.dart';
@@ -8,7 +9,6 @@ import '../../../../core/common_widgets/divider_text.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
-
 
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../bloc/auth_bloc.dart';
