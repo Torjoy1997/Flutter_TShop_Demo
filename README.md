@@ -28,23 +28,27 @@ Run the following commands from your terminal:
 # light mode:
 
 <p float="left">
-  <img src="assets/outputs/light/sc1.jpg" width="300"  />
-  <img src="assets/outputs/light/sc2.jpg" width="300" /> 
-  <img src="assets/outputs/light/sc3.jpg" width="300" />
-  <img src="assets/outputs/light/sc4.jpg" width="300"  />
-  <img src="assets/outputs/light/sc5.jpg" width="300" /> 
-  <img src="assets/outputs/light/sc6.jpg" width="300" />
+  <img src="assets/outputs/light/sc1.jpg" width="280"  />
+  <img src="assets/outputs/light/sc2.jpg" width="280" /> 
+  <img src="assets/outputs/light/sc6.jpg" width="280" />
+  <img src="assets/outputs/light/sc4.jpg" width="280"  />
+  <img src="assets/outputs/light/sc5.jpg" width="280" /> 
+  <img src="assets/outputs/light/sc7.jpg" width="280" />
+  <img src="assets/outputs/light/sc3.jpg" width="280" />
+  <img src="assets/outputs/light/sc8.jpg" width="280" />
+  <img src="assets/outputs/light/sc10.jpg" width="280" />
+  <img src="assets/outputs/light/sc12.jpg" width="280" />
 </p>
 
 # drak
 
 <p float="left">
-  <img src="assets/outputs/dark/sc1.jpg" width="300"  />
-  <img src="assets/outputs/dark/sc2.jpg" width="300" /> 
-  <img src="assets/outputs/dark/sc3.jpg" width="300" />
-  <img src="assets/outputs/dark/sc4.jpg" width="300"  />
-  <img src="assets/outputs/dark/sc5.jpg" width="300" /> 
-  <img src="assets/outputs/dark/sc6.jpg" width="300" />
+  <img src="assets/outputs/dark/sc1.jpg" width="280"  />
+  <img src="assets/outputs/dark/sc2.jpg" width="280" /> 
+  <img src="assets/outputs/dark/sc3.jpg" width="280" />
+  <img src="assets/outputs/dark/sc4.jpg" width="280"  />
+  <img src="assets/outputs/dark/sc5.jpg" width="280" /> 
+  <img src="assets/outputs/dark/sc6.jpg" width="280" />
 </p>
 
 ## using tools
