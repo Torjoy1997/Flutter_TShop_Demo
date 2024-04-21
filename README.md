@@ -28,16 +28,16 @@ Run the following commands from your terminal:
 # light mode:
 
 <p float="left">
-  <img src="assets/outputs/light/sc1.jpg" width="280"  />
-  <img src="assets/outputs/light/sc2.jpg" width="280" /> 
-  <img src="assets/outputs/light/sc6.jpg" width="280" />
-  <img src="assets/outputs/light/sc4.jpg" width="280"  />
-  <img src="assets/outputs/light/sc5.jpg" width="280" /> 
-  <img src="assets/outputs/light/sc7.jpg" width="280" />
-  <img src="assets/outputs/light/sc3.jpg" width="280" />
-  <img src="assets/outputs/light/sc8.jpg" width="280" />
-  <img src="assets/outputs/light/sc10.jpg" width="280" />
-  <img src="assets/outputs/light/sc12.jpg" width="280" />
+  <img src="assets/outputs/light/sc1.jpg" width="250"  />
+  <img src="assets/outputs/light/sc2.jpg" width="250" /> 
+  <img src="assets/outputs/light/sc6.jpg" width="250" />
+  <img src="assets/outputs/light/sc4.jpg" width="250"  />
+  <img src="assets/outputs/light/sc5.jpg" width="250" /> 
+  <img src="assets/outputs/light/sc7.jpg" width="250" />
+  <img src="assets/outputs/light/sc3.jpg" width="250" />
+  <img src="assets/outputs/light/sc8.jpg" width="250" />
+  <img src="assets/outputs/light/sc10.jpg" width="250" />
+  <img src="assets/outputs/light/sc12.jpg" width="250" />
 </p>
 
 # drak
