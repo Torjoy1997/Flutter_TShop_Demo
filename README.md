@@ -43,12 +43,12 @@ Run the following commands from your terminal:
 # drak
 
 <p float="left">
-  <img src="assets/outputs/dark/sc1.jpg" width="280"  />
-  <img src="assets/outputs/dark/sc2.jpg" width="280" /> 
-  <img src="assets/outputs/dark/sc3.jpg" width="280" />
-  <img src="assets/outputs/dark/sc4.jpg" width="280"  />
-  <img src="assets/outputs/dark/sc5.jpg" width="280" /> 
-  <img src="assets/outputs/dark/sc6.jpg" width="280" />
+  <img src="assets/outputs/dark/sc1.jpg" width="250"  />
+  <img src="assets/outputs/dark/sc2.jpg" width="250" /> 
+  <img src="assets/outputs/dark/sc3.jpg" width="250" />
+  <img src="assets/outputs/dark/sc4.jpg" width="250"  />
+  <img src="assets/outputs/dark/sc5.jpg" width="250" /> 
+  <img src="assets/outputs/dark/sc6.jpg" width="250" />
 </p>
 
 ## using tools
