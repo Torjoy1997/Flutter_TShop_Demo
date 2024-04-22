@@ -31,7 +31,7 @@ class VerifyEmailSuccessScreen extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                context.go('/');
+                context.goNamed('Home');
               },
               child: const Text(AppDefineTexts.tContinue),
             ),

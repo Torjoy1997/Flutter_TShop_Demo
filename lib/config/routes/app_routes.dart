@@ -241,8 +241,11 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: 'verify-email',
-                  builder: (context, state) => VerifyEmailScreen(
-                    email: state.uri.queryParameters['email'],
+                  builder: (context, state) => BlocProvider.value(
+                    value: AppProvidersAndRepos.authBloc,
+                    child: VerifyEmailScreen(
+                      email: state.uri.queryParameters['email'],
+                    ),
                   ),
                 ),
                 GoRoute(

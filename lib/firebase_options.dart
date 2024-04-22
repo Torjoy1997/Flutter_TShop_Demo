@@ -41,19 +41,19 @@ class DefaultFirebaseOptions {
   }
 
   static FirebaseOptions android = FirebaseOptions(
-    apiKey: dotenv.env['apikey']!,
-    appId: dotenv.env['appId']!,
-    messagingSenderId: dotenv.env['messagingSenderId']!,
-    projectId: dotenv.env['projectId']!,
-    storageBucket: dotenv.env['storageBucket']!,
+    apiKey: dotenv.get('apiKey'),
+    appId: dotenv.get('appId'),
+    messagingSenderId: dotenv.get('messagingSenderId'),
+    projectId: dotenv.get('projectId'),
+    storageBucket: dotenv.get('storageBucket'),
   );
 
   static FirebaseOptions ios = FirebaseOptions(
-    apiKey: dotenv.env['apiKeyIos']!,
-    appId: dotenv.env['appIdIos']!,
-    messagingSenderId: dotenv.env['messagingSenderIdIos']!,
-    projectId: dotenv.env['projectIdIos']!,
-    storageBucket: dotenv.env['storageBucketIos']!,
-    iosBundleId: dotenv.env['iosBundleIdIos'],
+    apiKey: dotenv.get('apiKeyIos'),
+    appId: dotenv.get('appIdIos'),
+    messagingSenderId: dotenv.get('messagingSenderIdIos'),
+    projectId: dotenv.get('projectIdIos'),
+    storageBucket: dotenv.get('storageBucketIos'),
+    iosBundleId: dotenv.get('iosBundleIdIos'),
   );
 }

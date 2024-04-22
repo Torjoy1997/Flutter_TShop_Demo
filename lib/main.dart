@@ -21,7 +21,9 @@ part 'my_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: 'assets/.env');
+  await dotenv.load(
+    fileName: 'assets/.env',
+  );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Bloc.observer = MyGlobalObserver();
   await LocalStorageService.init();
