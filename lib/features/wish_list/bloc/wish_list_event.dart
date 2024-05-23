@@ -29,4 +29,8 @@ class WishListRemoveEvent extends WishListEvent {
   List<Object> get props => [productId];
 }
 
-class WishListIsFavoriteEvent extends WishListEvent {}
+class WishListIsFavoriteEvent extends WishListEvent {
+  final List<String>? isFavorite;
+
+  const WishListIsFavoriteEvent({this.isFavorite});
+}

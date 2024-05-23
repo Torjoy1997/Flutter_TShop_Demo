@@ -145,7 +145,6 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                         onPressed: () {
                           if (editController.addressFormKey.currentState!
                               .validate()) {
-                            debugPrint(editController.nameOfUser.text);
                             context
                                 .read<AddressBloc>()
                                 .add(AddUserAddressEvent());

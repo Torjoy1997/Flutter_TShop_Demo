@@ -7,9 +7,12 @@ import 'package:ecommerce_demo/firebase_options.dart';
 import 'package:firebase_authentication_repository/authentication_repository.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'config/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +28,11 @@ Future<void> main() async {
     fileName: 'assets/.env',
   );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getApplicationDocumentsDirectory(),
+  );
   Bloc.observer = MyGlobalObserver();
   await LocalStorageService.init();
   runApp(MultiRepositoryProvider(
@@ -35,7 +43,7 @@ Future<void> main() async {
       RepositoryProvider.value(value: AppProvidersAndRepos.productRepository),
       RepositoryProvider(create: (_) => StoreRepository()),
       RepositoryProvider(create: (_) => CartRepository()),
-      RepositoryProvider.value(value: AppProvidersAndRepos.addressRepository)
+      RepositoryProvider.value(value: AppProvidersAndRepos.addressRepository),
     ],
     child: MyApp(
       appRouter: AppRouter(),

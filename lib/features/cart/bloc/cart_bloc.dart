@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:ecommerce_demo/features/product/repos/product.dart';
 import 'package:ecommerce_demo/features/store/model/brand.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:ecommerce_demo/features/cart/model/cart_item_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../model/cart_process.dart';
 import '../repos/cart.dart';
@@ -13,7 +13,7 @@ import '../repos/cart.dart';
 part 'cart_event.dart';
 part 'cart_state.dart';
 
-class CartBloc extends Bloc<CartEvent, CartState> {
+class CartBloc extends HydratedBloc<CartEvent, CartState> {
   final CartRepository _cartRepository;
   final ProductRepository _productRepository;
   late StreamSubscription cartSubscription;
@@ -21,7 +21,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       : super(CartInitial()) {
     cartSubscription = _cartRepository.fetchStreamCartItem().listen(
       (cartItems) {
-        debugPrint('CartItems');
         add(ProcessCartItemEvent(cartProcess: cartItems));
       },
     );
@@ -85,5 +84,19 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         emit(CartItemError(errorMessage: e.toString()));
       }
     });
+  }
+
+  @override
+  CartState? fromJson(Map<String, dynamic> json) {
+    return CartItemLoadedState(cartItems: json['cartData']);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(CartState state) {
+    if (state is CartItemLoadedState) {
+      return {'cartData': state.cartItems};
+    } else {
+      return null;
+    }
   }
 }

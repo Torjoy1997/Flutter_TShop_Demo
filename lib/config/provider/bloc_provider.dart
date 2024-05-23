@@ -29,7 +29,7 @@ class AppProvidersAndRepos {
   static final AddressRepository addressRepository = AddressRepository();
   static final ProductRepository productRepository = ProductRepository();
   static final CartRepository cartRepository = CartRepository();
-
+  static final WishListRepository wishRepository = WishListRepository();
   static final NetworkCubit networkCubit =
       NetworkCubit(connectivity: Connectivity());
   static final onBoardCubit = OnBoardCubit();
@@ -37,7 +37,7 @@ class AppProvidersAndRepos {
       AutoCompleteCubit(AutoCompleteRepository());
   static final DashboardBloc dashboardBloc = DashboardBloc(BannerRepository());
   static final ProductBloc productBloc = ProductBloc(productRepository);
-  static final WishListBloc wishListBloc = WishListBloc(WishListRepository());
+  static final WishListBloc wishListBloc = WishListBloc(wishRepository);
   static final CartBloc cartBloc = CartBloc(cartRepository, productRepository);
   static final AccountBloc accountBloc = AccountBloc(AccountRepository());
   static final AuthBloc authBloc = AuthBloc(AuthRepository(), accountBloc);

@@ -80,6 +80,7 @@ class AccountInfoView extends StatelessWidget {
                           height: 80,
                           isNetworkImage: userData.profilePic != '',
                           borderRadius: 100,
+                          fit: BoxFit.cover,
                         ),
                         TextButton(
                             onPressed: () {

@@ -162,22 +162,13 @@ class AppRouter {
                           ),
                       routes: [
                         GoRoute(
-                            path: 'address',
-                            name: 'Address',
-                            builder: (context, state) => BlocProvider.value(
-                                  value: AppProvidersAndRepos.addressBloc,
-                                  child: const AddressScreen(),
-                                ),
-                            routes: [
-                              GoRoute(
-                                path: 'add-address',
-                                name: 'Add_Address',
-                                builder: (context, state) => BlocProvider.value(
-                                  value: AppProvidersAndRepos.addressBloc,
-                                  child: const AddNewAddressScreen(),
-                                ),
-                              )
-                            ]),
+                          path: 'address',
+                          name: 'Address',
+                          builder: (context, state) => BlocProvider.value(
+                            value: AppProvidersAndRepos.addressBloc,
+                            child: const AddressScreen(),
+                          ),
+                        ),
                         GoRoute(
                             path: 'account-detail',
                             name: 'AccountDetail',
@@ -196,6 +187,14 @@ class AppRouter {
                       ])
                 ])
               ]),
+          GoRoute(
+            path: '/add-address',
+            name: 'Add_Address',
+            builder: (context, state) => BlocProvider.value(
+              value: AppProvidersAndRepos.addressBloc,
+              child: const AddNewAddressScreen(),
+            ),
+          ),
           GoRoute(
             path: '/on-board',
             builder: (context, state) => BlocProvider.value(

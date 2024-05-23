@@ -15,11 +15,4 @@ class MyGlobalObserver extends BlocObserver {
     debugPrint('==Event==');
     debugPrint('${bloc.runtimeType} $event');
   }
-
-  // @override
-  // void onTransition(Bloc bloc, Transition transition) {
-  //   super.onTransition(bloc, transition);
-  //   debugPrint('==Transition==');
-  //   debugPrint('${bloc.runtimeType} $transition');
-  // }
 }

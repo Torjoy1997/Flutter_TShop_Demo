@@ -1,14 +1,14 @@
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:ecommerce_demo/core/common_widgets/shimmer/vertical_card_shimmer.dart';
 import 'package:ecommerce_demo/features/product/bloc/product_bloc.dart';
 import 'package:ecommerce_demo/features/product/ui/widgets/product_drop_field.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/common_widgets/card/vertical_card.dart';
 import '../../../../core/layout/custom_bar/appbar.dart';
 import '../../../../core/layout/grid_layout.dart';
-
 import '../../../../utils/constants/sizes.dart';
 import '../../model/product.dart';
 import '../../repos/product.dart';

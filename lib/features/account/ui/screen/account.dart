@@ -92,11 +92,11 @@ class _AccountScreenState extends State<AccountScreen> {
                                       state.userData.profilePic!.isNotEmpty
                                           ? state.userData.profilePic!
                                           : AppImages.user,
-                                  width: 80,
-                                  height: 80,
+                                  width: 60,
+                                  height: 60,
                                   isNetworkImage:
                                       state.userData.profilePic != '',
-                                  borderRadius: 200,
+                                  borderRadius: 100,
                                   fit: BoxFit.cover,
                                 ),
                                 title: Text(

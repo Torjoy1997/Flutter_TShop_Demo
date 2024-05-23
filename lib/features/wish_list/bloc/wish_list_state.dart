@@ -37,10 +37,12 @@ final class WishListRemoveState extends WishListState {
 }
 
 final class WishListFavoriteState extends WishListState {
-  final Map<String, bool> isFavorite;
+  final List<String> isFavorite;
+  final DateTime timeStamp;
 
   const WishListFavoriteState({
-    this.isFavorite = const {},
+    required this.isFavorite,
+    required this.timeStamp,
   });
 
   @override

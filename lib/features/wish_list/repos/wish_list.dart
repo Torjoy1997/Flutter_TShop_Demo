@@ -6,25 +6,29 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
 
 class WishListRepository {
-  final _db = FirebaseFirestore.instance.collection('WishList');
   final _firebaseAuth = FirebaseAuth.instance;
+  final _db = FirebaseFirestore.instance.collection('Users');
+
   final ProductRepository _productRepository = ProductRepository();
 
-  Future<List<ProductModel>?> getWishProduct() async {
+  Future<List<ProductModel>> getWishProduct() async {
     try {
-      final productIdMap = await isFavoriteList();
-      final productIds = productIdMap.keys;
       final List<ProductModel> productWishList = [];
-
-      if (productIds.isNotEmpty) {
-        for (var productId in productIds) {
-          final productData = await _productRepository.getTheProduct(productId);
-          productWishList.add(productData);
+      if (_firebaseAuth.currentUser != null) {
+        final wishSnap = await _db
+            .doc(_firebaseAuth.currentUser!.uid)
+            .collection('WishList')
+            .get();
+        if (wishSnap.docs.isNotEmpty) {
+          for (var documentData in wishSnap.docs) {
+            final productData = await _productRepository
+                .getTheProduct(documentData.data()['productId']);
+            productWishList.add(productData);
+          }
         }
-
-        return productWishList;
       }
-      return null;
+
+      return productWishList;
     } catch (e) {
       throw e.toString();
     }
@@ -33,18 +37,10 @@ class WishListRepository {
   Future<void> addWish(String productId) async {
     try {
       if (_firebaseAuth.currentUser != null) {
-        final wishSnap = await _db.doc(_firebaseAuth.currentUser!.uid).get();
-        if (wishSnap.data()!['productId'] != null) {
-          final List<String> productIds =
-              wishSnap.data()!['productId'].cast<String>().toList();
-          await _db.doc(_firebaseAuth.currentUser!.uid).update({
-            'productId': [...productIds, productId]
-          });
-        } else {
-          await _db.doc(_firebaseAuth.currentUser!.uid).set({
-            'productId': [productId]
-          });
-        }
+        await _db
+            .doc(_firebaseAuth.currentUser!.uid)
+            .collection('WishList')
+            .add({'productId': productId});
       }
     } on FirebaseAuthException catch (e) {
       throw e.code;
@@ -58,16 +54,16 @@ class WishListRepository {
   Future<void> removeWish(String productId) async {
     try {
       if (_firebaseAuth.currentUser != null) {
-        final wishSnap = await _db.doc(_firebaseAuth.currentUser!.uid).get();
-        if (wishSnap.data()!['productId'] != null) {
-          final List<String> productIds =
-              wishSnap.data()!['productId'].cast<String>().toList();
-          int index = productIds.indexOf(productId);
-          productIds.removeAt(index);
-          await _db.doc(_firebaseAuth.currentUser!.uid).update({
-            'productId': [...productIds]
-          });
-        }
+        final wishRef = await _db
+            .doc(_firebaseAuth.currentUser!.uid)
+            .collection('WishList')
+            .where('productId', isEqualTo: productId)
+            .get();
+        await _db
+            .doc(_firebaseAuth.currentUser!.uid)
+            .collection('WishList')
+            .doc(wishRef.docs.first.id)
+            .delete();
       }
     } on FirebaseAuthException catch (e) {
       throw e.code;
@@ -78,17 +74,34 @@ class WishListRepository {
     }
   }
 
-  Future<Map<String, bool>> isFavoriteList() async {
+  Future<List<String>> isFavoriteList() async {
     try {
+      List<String> isFavoriteList = [];
       if (_firebaseAuth.currentUser != null) {
-        final wishSnap = await _db.doc(_firebaseAuth.currentUser!.uid).get();
-        if (wishSnap.data()!['productId'] != null) {
-          final List<String> productIds =
-              wishSnap.data()!['productId'].cast<String>().toList();
-          return {for (var productId in productIds) productId: true};
+        final wishRef = await _db
+            .doc(_firebaseAuth.currentUser!.uid)
+            .collection('WishList')
+            .get();
+
+        for (var documentWish in wishRef.docs) {
+          isFavoriteList.add(documentWish.data()['productId']);
         }
       }
-      return {};
+      return isFavoriteList;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  Stream<List<String>> isFavoriteListStrem() {
+    try {
+      return _db
+          .doc(_firebaseAuth.currentUser!.uid)
+          .collection('WishList')
+          .snapshots()
+          .map((event) => event.docs
+              .map((doc) => doc.data()['productId'].toString())
+              .toList());
     } catch (e) {
       throw e.toString();
     }

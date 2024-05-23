@@ -33,10 +33,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   List<ProductModel> productData = [];
   @override
   void initState() {
+    super.initState();
     context.read<DashboardBloc>().add(BannerSetEvent());
     context.read<ProductBloc>().add(const ProductFetchEvent());
-    context.read<WishListBloc>().add(WishListIsFavoriteEvent());
-    super.initState();
   }
 
   @override
@@ -88,8 +87,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               HomePageDesignShape(
                 child: Container(
                   decoration: const BoxDecoration(
-                    gradient: AppDefineColors.gradientColorBackground
-                  ),
+                      gradient: AppDefineColors.gradientColorBackground),
                   padding: const EdgeInsets.all(0),
                   child: Stack(
                     children: [

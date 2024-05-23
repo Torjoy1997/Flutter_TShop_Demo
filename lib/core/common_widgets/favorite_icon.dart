@@ -23,22 +23,29 @@ class FavouriteIcon extends StatefulWidget {
 }
 
 class _FavouriteIconState extends State<FavouriteIcon> {
-  Map<String, bool> isFavList = {};
-  bool isFav = false;
+  List<String> wishId = [];
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<WishListBloc>().add(const WishListIsFavoriteEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<WishListBloc, WishListState>(
-      key: widget.key,
       builder: (context, state) {
         if (state is WishListFavoriteState) {
-          isFavList = state.isFavorite;
-          isFav = isFavList.isNotEmpty && isFavList[widget.productId] != null;
+          wishId = state.isFavorite;
         }
         return IconContainer(
-            iconData: isFav ? Iconsax.heart5 : Iconsax.heart,
-            iconColor: isFav ? AppDefineColors.error : null,
-            onPressed: isFav
+            iconData: wishId.isNotEmpty && wishId.contains(widget.productId)
+                ? Iconsax.heart5
+                : Iconsax.heart,
+            iconColor: wishId.isNotEmpty && wishId.contains(widget.productId)
+                ? AppDefineColors.error
+                : null,
+            onPressed: wishId.isNotEmpty && wishId.contains(widget.productId)
                 ? () {
                     context.read<WishListBloc>().add(WishListRemoveEvent(
                           productId: widget.productId,

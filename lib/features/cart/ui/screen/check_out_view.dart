@@ -160,12 +160,22 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   ),
                   BlocBuilder<AddressBloc, AddressState>(
                     builder: (context, state) {
-                      if (state is FetchUserAddressLoading || userAddress.isEmpty) {
+                      if (state is FetchUserAddressLoading) {
                         return const AddressShimmer();
                       }
-                      return BillAddressSection(
-                        userAddress: userAddress,
-                      );
+                      if (state is FetchUserAddressLoaded) {
+                        if (state.userAddress.isNotEmpty) {
+                          return BillAddressSection(
+                            userAddress: userAddress,
+                          );
+                        }
+                      }
+
+                      return TextButton(
+                          onPressed: () {
+                            context.pushNamed('Add_Address');
+                          },
+                          child: const Text('please add your address'));
                     },
                   )
                 ]),
